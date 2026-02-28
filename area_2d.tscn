@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cb8ut7ieqja3t"]
+
+[ext_resource type="Script" uid="uid://d2neky4k6rejb" path="res://piggy.gd" id="1_dl81w"]
+[ext_resource type="Texture2D" uid="uid://dvj6ir22d7a5j" path="res://pig.png" id="2_5rgpn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fj7yv"]
+
+[sub_resource type="Animation" id="Animation_dl81w"]
+resource_name = "Animation"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2580536, 0.425),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 0]
+}
+
+[sub_resource type="Animation" id="Animation_5rgpn"]
+resource_name = "Idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c0nl8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dtnr"]
+_data = {
+&"Animation": SubResource("Animation_dl81w"),
+&"Idle": SubResource("Animation_5rgpn"),
+&"RESET": SubResource("Animation_c0nl8")
+}
+
+[node name="Area2D" type="Area2D" unique_id=1331865506]
+script = ExtResource("1_dl81w")
+Speed = 60
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1181206316]
+texture = ExtResource("2_5rgpn")
+offset = Vector2(0, -8)
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1890015896]
+position = Vector2(0, -1.9999999)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_fj7yv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=654898429]
+libraries/ = SubResource("AnimationLibrary_1dtnr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

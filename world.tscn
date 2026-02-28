@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dq0wc4lvt43c7"]
+
+[ext_resource type="PackedScene" uid="uid://cb8ut7ieqja3t" path="res://area_2d.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://c8mvmnvldh3ru" path="res://apple.tscn" id="2_fj7yv"]
+
+[node name="World" type="Node2D" unique_id=49777936]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=321325497]
+offset_left = -8.0
+offset_top = -3.0
+offset_right = 325.0
+offset_bottom = 190.0
+color = Color(0, 0, 0, 0.84313726)
+
+[node name="Area2D" parent="." unique_id=1331865506 instance=ExtResource("1_fj7yv")]
+position = Vector2(22, 26)
+
+[node name="Apple" parent="." unique_id=864921776 instance=ExtResource("2_fj7yv")]
+position = Vector2(118, 137)
+
+[node name="Apple2" parent="." unique_id=445569417 instance=ExtResource("2_fj7yv")]
+position = Vector2(187, 46)
+
+[node name="Apple3" parent="." unique_id=266076925 instance=ExtResource("2_fj7yv")]
+position = Vector2(217, 118)
